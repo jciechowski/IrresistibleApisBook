@@ -63,7 +63,6 @@ namespace IrresistibleApisCore.UnitTests
             var pizza = new Pizza
             {
                 Name = "Dummy",
-                Id = 666
             };
 
             sut.Add(pizza);
@@ -71,7 +70,7 @@ namespace IrresistibleApisCore.UnitTests
             var updatedPizza = new Pizza
             {
                 Name = "Updated Dummy",
-                Id = 666
+                Id = 4
             };
 
             sut.Update(updatedPizza);
