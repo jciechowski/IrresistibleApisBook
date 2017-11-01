@@ -1,0 +1,16 @@
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\xunit.runner.utility.netstandard15.dll
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netstandard15.dll
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.deps.json
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.runtimeconfig.json
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.runtimeconfig.dev.json
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.dll
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.pdb
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\obj\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\obj\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\obj\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.AssemblyInfoInputs.cache
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\obj\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.AssemblyInfo.cs
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\obj\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.dll
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\obj\Debug\netcoreapp2.0\IrresistibleApisCore.UnitTests.pdb
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\IrresistibleApisCore.dll
+C:\Users\sian\Dropbox\Projects\IrresistibleApisCore\IrresistibleApisCore.UnitTests\bin\Debug\netcoreapp2.0\IrresistibleApisCore.pdb
