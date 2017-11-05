@@ -47,21 +47,20 @@ namespace IrresistibleApisCore.Repository
             return pizza == null ? Maybe.Empty<Pizza>() : pizza.ToMaybe();
         }
 
-        public Maybe<Pizza> Add(Pizza pizza)
+        public void Add(Pizza pizza)
         {
             if (_pizzas.Any(_ => _.Id == pizza.Id || _.Name == pizza.Name))
-                return Maybe.Empty<Pizza>();
+                return;
 
+            pizza.Id = _pizzas.Count + 1;
             _pizzas.Add(pizza);
-            pizza.Id = _pizzas.Count;
-
-            return pizza.ToMaybe();
         }
 
         public void Update(Pizza pizza)
         {
             var pizzaToUpdateIndex = _pizzas.FindIndex(_ => _.Id == pizza.Id);
-            _pizzas[pizzaToUpdateIndex] = pizza;
+            if(pizzaToUpdateIndex >= 0)
+                _pizzas[pizzaToUpdateIndex] = pizza;
         }
     }
 }

@@ -7,65 +7,91 @@ namespace IrresistibleApisCore.UnitTests
 {
     public class PizzaRepositorySpec
     {
-        [Fact]
-        public void ShouldPopulatePizzasListAfterCreating()
+        private PizzaRepository _sut;
+
+        public PizzaRepositorySpec()
         {
-            var sut = new PizzaRepository();
-            Assert.Equal(3, sut.Get().Count());
+            _sut = new PizzaRepository();
         }
 
         [Fact]
-        public void ShouldReturnEmptyMaybeWhenAddingExistingPizza()
+        public void ShouldPopulatePizzasListAfterCreating()
         {
-            var sut = new PizzaRepository();
-            var existingPizza = sut.Get().First();
-            var result = sut.Add(existingPizza);
-            Assert.Equal(result, new Maybe<Pizza>());
+            Assert.Equal(3, _sut.Get().Count());
+        }
+
+        [Fact]
+        public void ShouldNotAddExistingPizza()
+        {
+            var numberOfPizzasBeforeAdd = _sut.Get().Count();
+            var existingPizza = _sut.Get().First();
+            _sut.Add(existingPizza);
+            var numberOfPizzasAfterAdd = _sut.Get().Count();
+            Assert.Equal(numberOfPizzasBeforeAdd, numberOfPizzasAfterAdd);
         }
 
         [Fact]
         public void ShouldReturnMaybeAfterAddedPizza()
         {
-            var sut = new PizzaRepository();
             var newPizza = new Pizza
             {
                 Name = "Dummy"
             };
-            var result = sut.Add(newPizza);
+            _sut.Add(newPizza);
+            var result = _sut.Get(newPizza.Name);
             Assert.Equal(result.First().Name, "Dummy");
         }
 
         [Fact]
         public void ShouldReturnEmptyMaybeWhenPizzaNotFound()
         {
-            var sut = new PizzaRepository();
-            var result = sut.Get(555);
+            var result = _sut.Get(555);
             Assert.Empty(result);
         }
 
         [Fact]
         public void ShouldFindPizzaByName()
         {
-            var sut = new PizzaRepository();
-            sut.Add(new Pizza
+            _sut.Add(new Pizza
             {
                 Name = "Dummy"
             });
 
-            var result = sut.Get("umm");
+            var result = _sut.Get("umm");
             Assert.Equal(result.First().Name, "Dummy");
+        }
+
+        [Fact]
+        public void ShouldAddNewPizza()
+        {
+            var newPizza = new Pizza {Name = "Dummy"};
+            var numberOfPizzasBeforeAdd = _sut.Get().Count();
+
+            _sut.Add(newPizza);
+            var numberOfPizzasAfterAdd = _sut.Get().Count();
+            Assert.Equal(numberOfPizzasBeforeAdd + 1, numberOfPizzasAfterAdd);
+        }
+
+        [Fact]
+        public void ShouldAddNewPizzaWithCorrectId()
+        {
+            var newPizza = new Pizza {Name = "Dummy"};
+            var expectedId = _sut.Get().Count() + 1;
+
+            _sut.Add(newPizza);
+            var resultId = _sut.Get(newPizza.Name).First().Id;
+            Assert.Equal(expectedId, resultId);
         }
 
         [Fact]
         public void ShouldUpdateExistingPizza()
         {
-            var sut = new PizzaRepository();
             var pizza = new Pizza
             {
                 Name = "Dummy",
             };
 
-            sut.Add(pizza);
+            _sut.Add(pizza);
 
             var updatedPizza = new Pizza
             {
@@ -73,9 +99,9 @@ namespace IrresistibleApisCore.UnitTests
                 Id = 4
             };
 
-            sut.Update(updatedPizza);
+            _sut.Update(updatedPizza);
 
-            var result = sut.Get(pizza.Id);
+            var result = _sut.Get(pizza.Id);
             Assert.Equal(result.First().Name, "Updated Dummy");
         }
     }

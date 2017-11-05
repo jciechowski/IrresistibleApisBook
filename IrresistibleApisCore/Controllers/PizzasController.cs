@@ -44,7 +44,9 @@ namespace IrresistibleApisCore.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Pizza pizza)
         {
-            var maybePizza = _pizzaRepository.Add(pizza);
+            _pizzaRepository.Add(pizza);
+
+            var maybePizza = _pizzaRepository.Get(pizza.Name);
             if (maybePizza.Any())
             {
                 return new ContentResult
@@ -60,11 +62,13 @@ namespace IrresistibleApisCore.Controllers
             };
         }
 
-        [HttpPut("{id")]
-        public IActionResult Put([FromBody] Pizza pizza)
-        {
-            _pizzaRepository.Update(pizza);
-            return Ok();
-        }
+//        [HttpPut("{id")]
+//        public IActionResult Put([FromBody] Pizza pizza)
+//        {
+//            _pizzaRepository.Update(pizza);
+//            var updatedPizza = _pizzaRepository.Get(pizza.Name);
+//            if(updatedPizza)
+//            return Ok();
+//        }
     }
 }
