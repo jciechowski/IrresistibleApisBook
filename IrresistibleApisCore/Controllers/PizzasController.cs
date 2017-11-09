@@ -28,8 +28,12 @@ namespace IrresistibleApisCore.Controllers
             var pizza = _pizzaRepository.Get(id);
 
             if (pizza.Any())
-                return new ObjectResult(pizza);
-            return NotFound();
+                return Ok(pizza.First());
+            return new ContentResult
+            {
+                Content = "Pizza not found",
+                StatusCode = 404
+            };
         }
 
         [HttpGet("{name}")]
@@ -65,7 +69,7 @@ namespace IrresistibleApisCore.Controllers
         [HttpPut]
         public IActionResult Put([FromBody] Pizza pizza)
         {
-            if(pizza == null)
+            if (pizza == null)
             {
                 return new ContentResult
                 {
