@@ -62,13 +62,39 @@ namespace IrresistibleApisCore.Controllers
             };
         }
 
-//        [HttpPut("{id")]
-//        public IActionResult Put([FromBody] Pizza pizza)
-//        {
-//            _pizzaRepository.Update(pizza);
-//            var updatedPizza = _pizzaRepository.Get(pizza.Name);
-//            if(updatedPizza)
-//            return Ok();
-//        }
+        [HttpPut]
+        public IActionResult Put([FromBody] Pizza pizza)
+        {
+            if(pizza == null)
+            {
+                return new ContentResult
+                {
+                    Content = "Missing id/name",
+                    StatusCode = 400
+                };
+            }
+
+            if (_pizzaRepository.Get(pizza.Name).Any())
+            {
+                return new ContentResult
+                {
+                    Content = "Duplicate pizza name",
+                    StatusCode = 409
+                };
+            }
+
+            var pizzaToUpdate = _pizzaRepository.Get(pizza.Id);
+            if (!pizzaToUpdate.Any())
+            {
+                return new ContentResult
+                {
+                    Content = "Pizza not found",
+                    StatusCode = 404
+                };
+            }
+
+            _pizzaRepository.Update(pizza);
+            return Ok();
+        }
     }
 }

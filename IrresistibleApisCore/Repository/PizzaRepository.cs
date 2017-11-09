@@ -43,6 +43,9 @@ namespace IrresistibleApisCore.Repository
 
         public Maybe<Pizza> Get(string name)
         {
+            if (name == null)
+                return Maybe.Empty<Pizza>();
+
             var pizza = _pizzas.FirstOrDefault(_ => _.Name.Contains(name));
             return pizza == null ? Maybe.Empty<Pizza>() : pizza.ToMaybe();
         }
