@@ -15,7 +15,7 @@ namespace IrresistibleApisCore.UnitTests
         }
 
         [Fact]
-        public void ShouldPopulatePizzasListAfterCreating()
+        public void PopulatePizzasListAfterCreating()
         {
             Assert.Equal(3, _sut.Get().Count());
         }
@@ -31,7 +31,7 @@ namespace IrresistibleApisCore.UnitTests
         }
 
         [Fact]
-        public void ShouldReturnMaybeAfterAddedPizza()
+        public void ReturnMaybeAfterAddingPizza()
         {
             var newPizza = new Pizza
             {
@@ -43,14 +43,14 @@ namespace IrresistibleApisCore.UnitTests
         }
 
         [Fact]
-        public void ShouldReturnEmptyMaybeWhenPizzaNotFound()
+        public void ReturnEmptyMaybeWhenPizzaNotFound()
         {
             var result = _sut.Get(555);
             Assert.Empty(result);
         }
 
         [Fact]
-        public void ShouldFindPizzaByName()
+        public void FindPizzaByName()
         {
             _sut.Add(new Pizza
             {
@@ -62,7 +62,7 @@ namespace IrresistibleApisCore.UnitTests
         }
 
         [Fact]
-        public void ShouldAddNewPizza()
+        public void AddNewPizza()
         {
             var newPizza = new Pizza {Name = "Dummy"};
             var numberOfPizzasBeforeAdd = _sut.Get().Count();
@@ -73,7 +73,7 @@ namespace IrresistibleApisCore.UnitTests
         }
 
         [Fact]
-        public void ShouldAddNewPizzaWithCorrectId()
+        public void NewAddedPizzaGetsCorrectId()
         {
             var newPizza = new Pizza {Name = "Dummy"};
             var expectedId = _sut.Get().Count() + 1;
@@ -84,7 +84,7 @@ namespace IrresistibleApisCore.UnitTests
         }
 
         [Fact]
-        public void ShouldUpdateExistingPizza()
+        public void UpdateExistingPizzaByName()
         {
             var pizza = new Pizza
             {
@@ -103,6 +103,17 @@ namespace IrresistibleApisCore.UnitTests
 
             var result = _sut.Get(pizza.Id);
             Assert.Equal(result.First().Name, "Updated Dummy");
+        }
+
+        [Fact]
+        public void DeleteExistingPizza()
+        {
+            var allPizzas = _sut.Get().ToList();
+            var pizzasCount = allPizzas.Count;
+            var pizza = allPizzas.First();
+            _sut.Delete(pizza);
+
+            Assert.Equal(pizzasCount - 1, _sut.Get().Count());
         }
     }
 }

@@ -98,7 +98,30 @@ namespace IrresistibleApisCore.Controllers
             }
 
             _pizzaRepository.Update(pizza);
-            return Ok();
+            return new ContentResult
+            {
+                StatusCode = 204
+            };
+        }
+
+        [HttpDelete]
+        public IActionResult Delete([FromBody] Pizza pizza)
+        {
+            if (pizza == null)
+            {
+                return new ContentResult
+                {
+                    Content = "Missing id/name",
+                    StatusCode = 404
+                };
+            }
+
+            _pizzaRepository.Delete(pizza);
+
+            return new ContentResult
+            {
+                StatusCode = 204
+            };
         }
     }
 }

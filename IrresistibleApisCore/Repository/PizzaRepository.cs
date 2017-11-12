@@ -65,5 +65,11 @@ namespace IrresistibleApisCore.Repository
             if(pizzaToUpdateIndex >= 0)
                 _pizzas[pizzaToUpdateIndex] = pizza;
         }
+
+        public void Delete(Pizza pizza)
+        {
+            var pizzaToDelete = _pizzas.Find(_ => _.Id == pizza.Id && _.Name == pizza.Name);
+            _pizzas.Remove(pizzaToDelete);
+        }
     }
 }

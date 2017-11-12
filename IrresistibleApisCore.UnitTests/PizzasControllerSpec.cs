@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using IrresistibleApisCore.Controllers;
-using IrresistibleApisCore.Models;
 using IrresistibleApisCore.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
